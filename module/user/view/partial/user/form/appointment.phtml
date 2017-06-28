@@ -1,0 +1,72 @@
+<?php
+$form = $this->form;
+$form->prepare();
+echo $this->form()->openTag($form);
+$employeeArr = $form->getEmployeeForSelectArr();
+$roomArr = $form->getRoomForSelectArr();
+?>
+    <div class="form-group <?php if($this->formElementErrors($form->get('appointmentName'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('appointmentName')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-font"></i>
+            <?php echo $this->formElement($form->get('appointmentName'));?>
+            <?php if($this->formElementErrors($form->get('appointmentName'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('appointmentName')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('appointmentTime'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('appointmentTime')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-calendar"></i>
+            <?php echo $this->formElement($form->get('appointmentTime'));?>
+            <?php if($this->formElementErrors($form->get('appointmentTime'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('appointmentTime')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('clientFullName'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('clientFullName')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-user"></i>
+            <?php echo $this->formElement($form->get('clientFullName'));?>
+            <?php if($this->formElementErrors($form->get('clientFullName'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('clientFullName')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('email'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('email')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-envelope"></i>
+            <?php echo $this->formElement($form->get('email'));?>
+            <?php if($this->formElementErrors($form->get('email'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('email')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('room'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('room')->getLabel(); ?></label>
+        <select id="roomSelect" name="room" class="select2 form-control">
+            <option data-code="" value=""></option>
+            <?php foreach($roomArr as $key => $room) : ?>
+                <option data-id="<?php echo $key; ?>" value="<?php echo $key; ?>"><?php echo $room; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <?php if($this->formElementErrors($form->get('room'))) : ?>
+            <span class="help-inline"><?php echo $this->formElementErrors($form->get('room')) ?></span>
+        <?php endif; ?>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('employee'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('employee')->getLabel(); ?></label>
+        <select id="employeeSelect" name="employee" class="select2 form-control">
+            <option data-code="" value=""></option>
+            <?php foreach($employeeArr as $key => $employee) : ?>
+                <option data-id="<?php echo $key; ?>" value="<?php echo $key; ?>"><?php echo $employee; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <?php if($this->formElementErrors($form->get('employee'))) : ?>
+            <span class="help-inline"><?php echo $this->formElementErrors($form->get('employee')) ?></span>
+        <?php endif; ?>
+    </div>
+<?php echo $this->form()->closeTag($form); ?>

@@ -1,0 +1,65 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="pl">
+  <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('bookingcomposer.com - '. $this->translate('Online Reservations System'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+	
+		<?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+						->appendStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all')
+                        ->appendStylesheet($this->basePath() . '/fonts/font-awesome/css/font-awesome.min.css')
+                        ->appendStylesheet($this->basePath() . '/img/simple-line-icons/simple-line-icons.min.css')
+                        ->appendStylesheet($this->basePath() . '/bootstrap/css/bootstrap.min.css')
+                        ->appendStylesheet($this->basePath() . '/uniform/css/uniform.default.css')
+                        ->appendStylesheet($this->basePath() . '/bootstrap-switch/css/bootstrap-switch.min.css')
+                        ->appendStylesheet($this->basePath() . '/select2/css/select2.min.css')
+                        ->appendStylesheet($this->basePath() . '/select2/css/select2-bootstrap.min.css')
+                        ->appendStylesheet($this->basePath() . '/css/components.min.css')
+                        ->appendStylesheet($this->basePath() . '/css/plugins.min.css')
+                        ->appendStylesheet($this->basePath() . '/css/custom.css')
+                        ->appendStylesheet($this->basePath() . '/css/login-soft.css')
+        ;
+        ?>
+  </head>
+  <body class="login">
+  <div class="logo">
+      <a href="<?php echo $this->url('login'); ?>">
+          <img src="<?php echo $this->basePath().'/img/Codeinc-logo.png'; ?>" alt=""/>
+      </a>
+  </div>
+  <div class="menu-toggler sidebar-toggler">
+  </div>
+  <div class="content">
+      <?php echo $this->content; ?>
+  </div>
+  <div class="copyright">
+      2016 &copy; Codeinc
+  </div>
+          <?php echo $this->inlineScript()
+              ->prependFile ( $this->basePath () . '/js/base/auth/password-recovery.js' )
+              ->prependFile ( $this->basePath () . '/js/base/auth/registration.js' )
+              ->prependFile ( $this->basePath () . '/js/base/auth/login.js' )
+              ->prependFile ( $this->basePath () . '/js/login.js' )
+              ->prependFile ( $this->basePath () . '/js/app.min.js' )
+              ->prependFile ( $this->basePath () . '/backstretch/jquery.backstretch.min.js' )
+              ->prependFile ( $this->basePath () . '/select2/js/select2.full.min.js' )
+              ->prependFile ( $this->basePath () . '/jquery-validation/js/additional-methods.min.js' )
+              ->prependFile ( $this->basePath () . '/jquery-validation/js/jquery.validate.min.js' )
+              ->prependFile ( $this->basePath () . '/bootstrap-switch/js/bootstrap-switch.min.js' )
+              ->prependFile ( $this->basePath () . '/uniform/jquery.uniform.min.js' )
+              ->prependFile ( $this->basePath () . '/js/jquery.blockui.min.js' )
+              ->prependFile ( $this->basePath () . '/js/jquery-slimscroll/jquery.slimscroll.min.js' )
+              ->prependFile ( $this->basePath () . '/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js' )
+              ->prependFile ( $this->basePath () . '/js/jquery.cokie.min.js' )
+              ->prependFile ( $this->basePath () . '/js/bootstrap.min.js' )
+              ->prependFile ( $this->basePath () . '/js/jquery.min.js' )
+              ->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+              ->prependFile($this->basePath() . '/js/excanvas.min.js',   'text/javascript', array('conditional' => 'lt IE 9',))
+          ; ?>
+  </body>
+</html>

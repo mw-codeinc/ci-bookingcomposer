@@ -1,0 +1,108 @@
+<?php
+$form = $this->form;
+$form->prepare();
+echo $this->form()->openTag($form);
+$countryArr = $form->getCountryArr();
+?>
+    <h3>Zarejestruj się</h3>
+    <p>Wprowadź swoje dane poniżej:</p>
+    <div class="form-group <?php if($this->formElementErrors($form->get('fullName'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('fullName')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-font"></i>
+            <?php echo $this->formElement($form->get('fullName'));?>
+            <?php if($this->formElementErrors($form->get('fullName'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('fullName')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('email'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('email')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-envelope"></i>
+            <?php echo $this->formElement($form->get('email'));?>
+            <?php if($this->formElementErrors($form->get('email'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('email')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('address'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('address')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-map-marker"></i>
+            <?php echo $this->formElement($form->get('address'));?>
+            <?php if($this->formElementErrors($form->get('address'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('address')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('city'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('city')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-location-arrow"></i>
+            <?php echo $this->formElement($form->get('city'));?>
+            <?php if($this->formElementErrors($form->get('city'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('city')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('country'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('country')->getLabel(); ?></label>
+        <select id="countrySelect" name="country" class="select2 form-control">
+            <option data-code="" value=""></option>
+            <?php foreach($countryArr as $key => $country) : ?>
+                <option data-code="<?php echo $country['code']; ?>" value="<?php echo $key; ?>"><?php echo $country['name']; ?></option>
+            <?php endforeach; ?>
+        </select>
+        <?php if($this->formElementErrors($form->get('country'))) : ?>
+            <span class="help-inline"><?php echo $this->formElementErrors($form->get('country')) ?></span>
+        <?php endif; ?>
+    </div>
+    <p>Wprowadź dane swojego konta:</p>
+    <div class="form-group <?php if($this->formElementErrors($form->get('userName'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('userName')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-user"></i>
+            <?php echo $this->formElement($form->get('userName'));?>
+            <?php if($this->formElementErrors($form->get('userName'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('userName')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('password'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('password')->getLabel(); ?></label>
+        <div class="input-icon">
+            <i class="fa fa-lock"></i>
+            <?php echo $this->formElement($form->get('password'));?>
+            <?php if($this->formElementErrors($form->get('password'))) : ?>
+                <span class="help-inline"><?php echo $this->formElementErrors($form->get('password')) ?></span>
+            <?php endif; ?>
+        </div>
+    </div>
+    <div class="form-group <?php if($this->formElementErrors($form->get('rePassword'))) echo "has-error has-feedback" ?>">
+        <label class="control-label visible-ie8 visible-ie9"><?php echo $form->get('rePassword')->getLabel(); ?></label>
+        <div class="controls">
+            <div class="input-icon">
+                <i class="fa fa-check"></i>
+                <?php echo $this->formElement($form->get('rePassword'));?>
+                <?php if($this->formElementErrors($form->get('rePassword'))) : ?>
+                    <span class="help-inline"><?php echo $this->formElementErrors($form->get('rePassword')) ?></span>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+<!--    <div class="form-group">-->
+<!--        <label>-->
+<!--            <input type="checkbox" name="tnc"/> I agree to the <a href="#">-->
+<!--                Terms of Service </a>-->
+<!--            and <a href="#">-->
+<!--                Privacy Policy </a>-->
+<!--        </label>-->
+<!--        <div id="register_tnc_error">-->
+<!--        </div>-->
+<!--    </div>-->
+    <div class="form-actions">
+        <button id="register-back-btn" type="button" class="btn"><i class="m-icon-swapleft"></i> Wstecz </button>
+        <button id="registrationFormSubmitBtn" class="btn blue pull-right">Zarejestruj się <i class="m-icon-swapright m-icon-white"></i></button>
+    </div>
+<?php echo $this->form()->closeTag($form); ?>

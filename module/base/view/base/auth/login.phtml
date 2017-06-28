@@ -1,0 +1,17 @@
+<?php echo $this->partial('partial/base/form/login', array('form' => $this->form)); ?>
+<div class="forget-password">
+    <h4>Zapomniałeś hasła ?</h4>
+    <p>Nic straconego, kliknij <a href="javascript:;" id="forget-password">tutaj</a> aby zmienić swoje hasło.</p>
+</div>
+<div class="create-account">
+    <p>Nie masz konta ?&nbsp; <a href="javascript:;" id="register-btn">Stwórz konto</a></p>
+</div>
+<?php echo $this->partial('partial/base/form/password-recovery', array('form' => $this->passwordRecoveryForm)); ?>
+<?php echo $this->partial('partial/base/form/registration', array('form' => $this->registrationForm)); ?>
+
+<script>
+    var dashboardUrl        = '<?php echo $this->url('user-dashboard');?>';
+    var loginUrl            = '<?php echo $this->url('proceed-login');?>';
+    var registrationUrl     = '<?php echo $this->url('registration');?>';
+    var passwordRecoveryUrl = '<?php echo $this->url('password-recovery');?>';
+</script>

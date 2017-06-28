@@ -1,0 +1,156 @@
+<?php echo $this->doctype(); ?>
+
+<html lang="pl">
+  <head>
+        <meta charset="utf-8">
+        <?php echo $this->headTitle('bookingcomposer.com - '. $this->translate('Online Reservations System'))->setSeparator(' - ')->setAutoEscape(false) ?>
+
+        <?php echo $this->headMeta()
+            ->appendName('viewport', 'width=device-width, initial-scale=1.0')
+            ->appendHttpEquiv('X-UA-Compatible', 'IE=edge')
+        ?>
+
+		<?php echo $this->headLink(array('rel' => 'shortcut icon', 'type' => 'image/vnd.microsoft.icon', 'href' => $this->basePath() . '/img/favicon.ico'))
+						->appendStylesheet('http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all')
+                        ->appendStylesheet($this->basePath() . '/fonts/font-awesome/css/font-awesome.min.css')
+                        ->appendStylesheet($this->basePath() . '/img/simple-line-icons/simple-line-icons.min.css')
+                        ->appendStylesheet($this->basePath() . '/bootstrap/css/bootstrap.min.css')
+                        ->appendStylesheet($this->basePath() . '/uniform/css/uniform.default.css')
+						->appendStylesheet($this->basePath() . '/bootstrap-switch/css/bootstrap-switch.min.css')
+						->appendStylesheet($this->basePath() . '/fullcalendar/fullcalendar.min.css')
+						->appendStylesheet($this->basePath() . '/bootstrap-fileinput/bootstrap-fileinput.css')
+						->appendStylesheet($this->basePath() . '/select2/css/select2.min.css')
+						->appendStylesheet($this->basePath() . '/select2/css/select2-bootstrap.min.css')
+						->appendStylesheet($this->basePath() . '/css/components.min.css')
+						->appendStylesheet($this->basePath() . '/css/plugins.min.css')
+						->appendStylesheet($this->basePath() . '/css/profile.min.css')
+						->appendStylesheet($this->basePath() . '/css/layout.min.css')
+                        ->appendStylesheet($this->basePath() . '/css/themes/darkblue.css')
+                        ->appendStylesheet($this->basePath() . '/bootstrap-datepicker/css/datepicker.css')
+                        ->appendStylesheet($this->basePath() . '/bootstrap-toastr/toastr.min.css')
+                        ->appendStylesheet($this->basePath() . '/css/custom.css')
+		;
+        ?>
+  </head>
+  <?php if($this->getControllerName() == 'user\Controller\Profile' && $this->getActionName() == 'view') : ?>
+  	<body class="page-header-fixed page-sidebar-closed-hide-logo page-container-bg-solid page-content-white">
+  <?php else : ?>
+  	<body class="page-header-fixed page-quick-sidebar-over-content page-style-square">
+  <?php endif; ?>
+<div class="page-header navbar navbar-fixed-top">
+	<div class="page-header-inner">
+		<div class="page-logo">
+			<a href="<?php echo $this->url('home'); ?>">
+			<img src="<?php echo $this->basePath().'/img/Codeinc-logo.png'; ?>" alt="logo" style="margin-top: 5px;"/>
+			</a>
+			<div class="menu-toggler sidebar-toggler hide">
+			</div>
+		</div>
+		<a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+		</a>
+		<div class="top-menu">
+			<ul class="nav navbar-nav pull-right">
+                <li class="dropdown dropdown-language">
+                    <ul class="dropdown-menu dropdown-menu-default">
+                        <li>
+                            <a href="javascript:;">
+                                <img alt="" src="<?php echo $this->basePath().'/img/flags/us.png'; ?>"> US
+                            </a>
+                        </li>
+                    </ul>
+                </li>
+				<li class="dropdown dropdown-user">
+					<a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+					<img alt="" class="img-circle" src="<?php echo $this->basePath().'/img/avatar.png'; ?>"/>
+					<span class="username username-hide-on-mobile"><?php echo (is_object($this->userIdentity) ? $this->userIdentity->getUserName() : ''); ?></span>
+					<i class="fa fa-angle-down"></i>
+					</a>
+					<ul class="dropdown-menu dropdown-menu-default">
+						<li class="divider">
+						</li>
+						<li>
+							<a href="<?php echo $this->url('logout'); ?>">
+							<i class="icon-key"></i> Wyloguj </a>
+						</li>
+					</ul>
+				</li>
+			</ul>
+		</div>
+	</div>
+</div>
+<div class="clearfix">
+</div>
+<div class="page-container">
+	<div class="page-sidebar-wrapper">
+		<div class="page-sidebar navbar-collapse collapse">
+			<ul class="page-sidebar-menu" data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200">
+				<li class="sidebar-toggler-wrapper">
+					<div class="sidebar-toggler">
+					</div>
+				</li>
+				<li class="sidebar-search-wrapper">
+					<form class="sidebar-search " action="extra_search.html" method="POST">
+						<a href="javascript:;" class="remove">
+						<i class="icon-close"></i>
+						</a>
+						<div class="input-group">
+							<input type="text" class="form-control" placeholder="Szukaj...">
+							<span class="input-group-btn">
+							<a href="javascript:;" class="btn submit"><i class="icon-magnifier"></i></a>
+							</span>
+						</div>
+					</form>
+				</li>
+				<li <?php if($this->getControllerName() == 'user\Controller\Calendar' && $this->getActionName() == 'index') {echo 'class="start active open"';} ?>>
+					<a href="<?php echo $this->url('user-calendar'); ?>">
+						<i class="icon-calendar"></i>
+						<span class="title">Kalendarz</span>
+						<span class="selected"></span>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<div class="page-content-wrapper">
+		<div class="page-content">
+			<?php echo $this->content; ?>
+		</div>
+	</div>
+</div>
+<div class="page-footer">
+	<div class="page-footer-inner">
+		 2016 &copy; Codeinc
+	</div>
+	<div class="scroll-to-top">
+		<i class="icon-arrow-up"></i>
+	</div>
+</div>
+			<?php echo $this->inlineScript()
+				->prependFile ( $this->basePath () . '/js/calendar.js' )
+				->prependFile ( $this->basePath () . '/jquery-ui/jquery-ui.min.js' )
+				->prependFile ( $this->basePath () . '/fullcalendar/lang-all.js' )
+				->prependFile ( $this->basePath () . '/fullcalendar/fullcalendar.min.js' )
+				->prependFile ( $this->basePath () . '/js/moment.min.js' )
+				->prependFile ( $this->basePath () . '/select2/js/i18n/pl.js' )
+				->prependFile ( $this->basePath () . '/select2/js/select2.full.min.js' )
+				->prependFile ( $this->basePath () . '/jquery-validation/js/additional-methods.min.js' )
+				->prependFile ( $this->basePath () . '/jquery-validation/js/jquery.validate.min.js' )
+				->prependFile ( $this->basePath () . '/js/quick-sidebar.min.js' )
+				->prependFile ( $this->basePath () . '/js/layout.min.js' )
+				->prependFile ( $this->basePath () . '/js/profile.min.js' )
+				->prependFile ( $this->basePath () . '/js/app.min.js' )
+				->prependFile ( $this->basePath () . '/js/jquery.sparkline.min.js' )
+				->prependFile ( $this->basePath () . '/bootstrap-fileinput/bootstrap-fileinput.js' )
+				->prependFile ( $this->basePath () . '/bootstrap-switch/js/bootstrap-switch.min.js' )
+				->prependFile ( $this->basePath () . '/uniform/jquery.uniform.min.js' )
+				->prependFile ( $this->basePath () . '/js/jquery.blockui.min.js' )
+				->prependFile ( $this->basePath () . '/js/jquery-slimscroll/jquery.slimscroll.min.js' )
+				->prependFile ( $this->basePath () . '/bootstrap-hover-dropdown/bootstrap-hover-dropdown.min.js' )
+				->prependFile ( $this->basePath () . '/js/jquery.cokie.min.js' )
+				->prependFile ( $this->basePath () . '/js/bootstrap.min.js' )
+				->prependFile ( $this->basePath () . '/js/jquery.min.js' )
+				->prependFile($this->basePath() . '/js/respond.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+				->prependFile($this->basePath() . '/js/excanvas.min.js', 'text/javascript', array('conditional' => 'lt IE 9',))
+        	; ?>
+  </body>
+</html>

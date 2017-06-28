@@ -1,0 +1,26 @@
+{
+  "name": "zendframework/skeleton-application",
+  "description": "bookingcomposer.com - Reservation System",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "system",
+    "reservations",
+    "booking"
+  ],
+  "repositories": [
+    {"type": "vcs", "url": "https://github.com/weierophinney/zend-mvc.git"}
+  ],
+  "homepage": "http://bookingcomposer.com/",
+  "require": {
+    "php": ">=5.5.10",
+    "zendframework/zendframework": "2.*",
+    "zendframework/zend-mvc": "2.6.3",
+    "doctrine/doctrine-orm-module": "0.7.*",
+    "doctrine/migrations": "dev-master",
+    "evandotpro/edp-module-layouts": "1.0",
+    "phpoffice/phpexcel": "1.8.1",
+    "mindscape/raygun4php": "1.*",
+    "zfr/zfr-mailchimp-module": "2.*",
+    "mailin-api/mailin-api-php": "^1.0"
+  }
+}
